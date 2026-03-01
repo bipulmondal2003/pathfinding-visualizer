@@ -35,4 +35,3 @@ Use the buttons in the navbar to select which search you want to visualize.  Aft
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/sunnybhardwaj2027/pathfinding-visualizer.git](https://github.com/sunnybhardwaj2027/pathfinding-visualizer.git)
