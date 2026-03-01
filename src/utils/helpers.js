@@ -11,6 +11,17 @@ export const createNode = (col, row) => {
   };
 };
 
+export const manhattanDistance = (nodeA, nodeB) => {
+  return Math.abs(nodeA.row - nodeB.row) + Math.abs(nodeA.col - nodeB.col);
+};
+
+export const euclideanDistance = (nodeA, nodeB) => {
+  const dx = nodeA.row - nodeB.row;
+  const dy = nodeA.col - nodeB.col;
+  return Math.sqrt(dx * dx + dy * dy);
+};
+
+export const defaultHeuristic = manhattanDistance;
 export const getInitialGrid = (rows = 20, cols = 50) => {
   const grid = [];
   for (let row = 0; row < rows; row++) {

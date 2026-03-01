@@ -5,6 +5,8 @@ import { getInitialGrid } from './utils/helpers';
 import { dijkstra, getNodesInShortestPathOrder } from './algorithms/dijkstra';
 import { bfs } from './algorithms/bfs';
 import { dfs } from './algorithms/dfs';
+import { aStar } from './algorithms/aStar';
+import { bestFirst } from './algorithms/bestFirst';
 
 function App() {
   const [grid, setGrid] = useState([]);
@@ -51,6 +53,24 @@ function App() {
     const finishNode = grid[10][35];
     // pass true so DFS will exhaustively search and return the shortest path
     const visitedNodesInOrder = dfs(grid, startNode, finishNode, true);
+    const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+    animate(visitedNodesInOrder, nodesInShortestPathOrder);
+  };
+
+  const visualizeAStar = () => {
+    resetGridState();
+    const startNode = grid[10][5];
+    const finishNode = grid[10][35];
+    const visitedNodesInOrder = aStar(grid, startNode, finishNode);
+    const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+    animate(visitedNodesInOrder, nodesInShortestPathOrder);
+  };
+
+  const visualizeBestFirst = () => {
+    resetGridState();
+    const startNode = grid[10][5];
+    const finishNode = grid[10][35];
+    const visitedNodesInOrder = bestFirst(grid, startNode, finishNode);
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
     animate(visitedNodesInOrder, nodesInShortestPathOrder);
   };
@@ -113,6 +133,8 @@ function App() {
         visualizeDijkstra={visualizeDijkstra} 
         visualizeBFS={visualizeBFS} 
         visualizeDFS={visualizeDFS}
+        visualizeAStar={visualizeAStar}
+        visualizeBestFirst={visualizeBestFirst}
         clearGrid={() => setGrid(getInitialGrid())} 
       />
       <div className="flex flex-col items-center mt-10">

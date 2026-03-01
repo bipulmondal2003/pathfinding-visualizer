@@ -20,15 +20,16 @@ public:
         q.push({src,1});
         seen[src.first][src.second] = true;
         while(!q.empty()){
-            auto [p,d] = q.front(); q.pop();
+            auto t = q.front(); q.pop();
+            auto p = t.first; int d = t.second;
             if(p==dst) return d;
             for(auto &dir: dirs){
                 int nr = p.first + dir.first;
                 int nc = p.second + dir.second;
-                pair<int,int> np{nr,nc};
+                pair<int,int> np = make_pair(nr,nc);
                 if(inBounds(np) && !seen[nr][nc] && grid[nr][nc]==0){
                     seen[nr][nc] = true;
-                    q.push({np,d+1});
+                    q.push(make_pair(np,d+1));
                 }
             }
         }

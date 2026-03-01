@@ -1,7 +1,7 @@
 // src/components/Navbar.jsx
 import React from 'react';
 
-const Navbar = ({ visualizeDijkstra, visualizeBFS, visualizeDFS, clearGrid }) => {
+const Navbar = ({ visualizeDijkstra, visualizeBFS, visualizeDFS, visualizeAStar, visualizeBestFirst, clearGrid }) => {
   return (
     <nav className="w-full bg-slate-800 p-4 mb-8 flex justify-center gap-6 shadow-md">
       <div className="text-white font-bold text-xl mr-auto ml-10">
@@ -28,6 +28,20 @@ const Navbar = ({ visualizeDijkstra, visualizeBFS, visualizeDFS, clearGrid }) =>
           className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-2 rounded-md font-semibold transition-all active:scale-95"
         >
           DFS
+        </button>
+
+        <button 
+          onClick={visualizeAStar}
+          className="bg-rose-500 hover:bg-rose-600 text-white px-6 py-2 rounded-md font-semibold transition-all active:scale-95"
+        >
+          A*
+        </button>
+
+        <button 
+          onClick={visualizeBestFirst}
+          className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-md font-semibold transition-all active:scale-95"
+        >
+          Best-first
         </button>
 
         <button 
